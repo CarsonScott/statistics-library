@@ -4,11 +4,12 @@
 #include <vector>
 #include <cmath>
 
-#define DataSet std::vector<float>
+#define Data std::vector<long double>
 
-float mean(DataSet);
-float variance(DataSet, bool);
-float std_dev(DataSet, bool);
-float mse(DataSet, DataSet);
-float weighted_mse(DataSet, DataSet, DataSet);
+long double mean(Data);
+long double var(Data, bool);
+long double std_dev(Data, bool);
+long double mse(Data, Data);
+long double weighted_mse(Data, Data, Data);
+
 #endif // STATS_HPP_INCLUDED

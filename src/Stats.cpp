@@ -1,52 +1,56 @@
 #include "Stats.hpp"
 
-float mean(DataSet x)
+long double mean(Data x)
 {
-    float m = 0;
+    long double m = 0;
     for(int i = 0; i < x.size(); i++)
     {
         m += x[i];
     }
+
     return m/x.size();
 }
 
-float variance(DataSet x, bool sample=false)
+long double var(Data x, bool sample=false)
 {
-    float v = 0;
-    float m = mean(x);
+    long double v = 0;
+    long double m = mean(x);
     for(int i = 0; i < x.size(); i++)
     {
-        v += pow(x[i] - m, 2);
+        v += pow(x[i]-m, 2);
     }
-    float n = x.size();
+    long double n = x.size();
     if(sample) n -= 1;
+
     return v/n;
 }
 
-float std_dev(DataSet x, bool sample=false)
+long double std_dev(Data x, bool sample=false)
 {
     /* Standard Deviation */
-    return sqrt(variance(x, sample));
+    return sqrt(var(x, sample));
 }
 
-float mse(DataSet p, DataSet m)
+long double mse(Data p, Data m)
 {
     /* Mean-Squared Error */
-    float e = 0;
+    long double e = 0;
     for(int i = 0; i < p.size(); i++)
     {
-        e += pow(p[i] - m[i], 2);
+        e += pow(p[i]-m[i], 2);
     }
+
     return e/p.size();
 }
 
-float wmse(DataSet p, DataSet m, DataSet w)
+long double wmse(Data p, Data m, Data w)
 {
     /* Weighted Mean-Squared Error */
-    float e = 0;
+    long double e = 0;
     for(int i = 0; i < p.size(); i++)
     {
-        e += w[i]*pow(p[i] - m[i], 2);
+        e += pow(p[i]-m[i], 2)*w[i];
     }
+
     return e/p.size();
 }

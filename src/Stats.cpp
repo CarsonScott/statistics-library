@@ -2,6 +2,7 @@
 
 long double mean(Data x)
 {
+    /* Average */
     long double m = 0;
     for(int i = 0; i < x.size(); i++)
     {
@@ -13,6 +14,7 @@ long double mean(Data x)
 
 long double var(Data x, bool sample=false)
 {
+    /* Variance */
     long double v = 0;
     long double m = mean(x);
     for(int i = 0; i < x.size(); i++)
